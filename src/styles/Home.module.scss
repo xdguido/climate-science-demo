@@ -1,13 +1,5 @@
-$animation-duration-question: 600ms;
-//animation duration for a 3 questions container = question duration * questions amount * total question duration * twenty percent
-$animation-duration-container-3: $animation-duration-question * 3 * 2 * 1.2;
-$question-color: violet;
-$correct-color: cyan;
-
-// Generate unique animation delays for each question
-@function generate-animation-delay($index) {
-    @return $animation-duration-question * $index;
-}
+$animation-duration: 5000ms;
+$oplympiad-purple: #6231ec;
 
 .main {
     display: flex;
@@ -18,34 +10,102 @@ $correct-color: cyan;
     min-height: 100vh;
 }
 
+.title {
+    padding-inline: 20px;
+    margin-bottom: 20px;
+}
+
 .container {
     background-color: white;
     width: 500px;
     overflow: hidden;
     opacity: 0;
-    animation: fadeInAndOut $animation-duration-container-3 ease-in-out;
+    padding: 40px;
+    border: 2px;
+    border-style: solid;
+    border-color: $oplympiad-purple;
+    border-radius: 30px;
+    animation: fadeInAndOut $animation-duration ease-in-out infinite;
+}
+
+.correct {
+    fill: transparent;
+    animation: fadeCorrect $animation-duration ease-in-out infinite;
+    animation-fill-mode: forwards;
 }
 
 .question {
-    color: $question-color;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: $oplympiad-purple;
     opacity: 0;
+    padding-inline: 15px;
+    padding-block: 10px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    box-shadow: 0px 5px 19px 0px rgba(42, 43, 104, 0.2);
+    -webkit-box-shadow: 0px 5px 19px 0px rgba(42, 43, 104, 0.2);
+    -moz-box-shadow: 0px 5px 19px 0px rgba(42, 43, 104, 0.2);
+}
+
+.question:last-child {
+    margin-bottom: 0px;
 }
 
 @for $i from 1 through 10 {
     // Loop up to a maximum of 10 questions, adjust the number as per requirements
+    // Write more `fadeInQuestion` animations if necessary
     .question:nth-child(#{$i}) {
-        animation: fadeIn $animation-duration-question ease-in-out;
-        animation-fill-mode: both;
-        animation-delay: generate-animation-delay($i);
+        animation: fadeInQuestion#{$i} $animation-duration ease-in-out infinite;
+        animation-fill-mode: forwards;
     }
 }
 
-@keyframes fadeIn {
-    from {
+@keyframes fadeCorrect {
+    0%,
+    50% {
+        fill: transparent;
+    }
+    55%,
+    100% {
+        fill: $oplympiad-purple;
+    }
+}
+
+@keyframes fadeInQuestion1 {
+    0% {
         opacity: 0;
         transform: translateY(50px);
     }
-    to {
+    10%,
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInQuestion2 {
+    0%,
+    10% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    20%,
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInQuestion3 {
+    0%,
+    20% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    30%,
+    100% {
         opacity: 1;
         transform: translateY(0);
     }
@@ -56,11 +116,11 @@ $correct-color: cyan;
         opacity: 0;
         transform: translateY(50px);
     }
-    10% {
+    8% {
         opacity: 1;
         transform: translateY(0);
     }
-    90% {
+    92% {
         opacity: 1;
         transform: translateY(0);
     }

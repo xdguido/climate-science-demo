@@ -1,19 +1,10 @@
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.scss';
-import { useEffect, useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
-    const [key, setKey] = useState(0);
-    useEffect(() => {
-        const id = setTimeout(() => {
-            setKey((previous) => previous + 1);
-        }, 4320);
-        return () => clearTimeout(id);
-    }, [key]);
-
     return (
         <>
             <Head>
@@ -23,12 +14,66 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={`${styles.main} ${inter.className}`}>
-                <div key={key} className={`${styles.container}`}>
-                    <p>QUESTION???</p>
+                <div className={`${styles.container}`}>
+                    <p className={`${styles.title}`}>
+                        Which of the below statements about electricity is not true?
+                    </p>
                     <ul>
-                        <li className={`${styles.question}`}>question 1</li>
-                        <li className={`${styles.question}`}>question 2</li>
-                        <li className={`${styles.question}`}>question 3</li>
+                        <li className={`${styles.question}`}>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="29"
+                                height="29"
+                                viewBox="0 0 29 29"
+                                fill="transparent"
+                            >
+                                <circle
+                                    cx="14.5996"
+                                    cy="14.7192"
+                                    r="12.375"
+                                    stroke="#6231EC"
+                                    stroke-width="3"
+                                />
+                            </svg>
+                            Electricity is measured in units called watts
+                        </li>
+                        <li className={`${styles.question}`}>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="29"
+                                height="29"
+                                viewBox="0 0 29 29"
+                                fill="transparent"
+                            >
+                                <circle
+                                    cx="14.5996"
+                                    cy="14.7192"
+                                    r="12.375"
+                                    stroke="#6231EC"
+                                    stroke-width="3"
+                                />
+                            </svg>
+                            Electricity flows at the speed of light
+                        </li>
+                        <li className={`${styles.question}`}>
+                            <svg
+                                className={`${styles.correct}`}
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="29"
+                                height="29"
+                                viewBox="0 0 29 29"
+                                fill="transparent"
+                            >
+                                <circle
+                                    cx="14.5996"
+                                    cy="14.7192"
+                                    r="12.375"
+                                    stroke="#6231EC"
+                                    stroke-width="3"
+                                />
+                            </svg>
+                            Electricity is a primary energy source
+                        </li>
                     </ul>
                 </div>
             </main>
