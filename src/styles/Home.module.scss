@@ -1,0 +1,71 @@
+$animation-duration-question: 600ms;
+//animation duration for a 3 questions container = question duration * questions amount * total question duration * twenty percent
+$animation-duration-container-3: $animation-duration-question * 3 * 2 * 1.2;
+$question-color: violet;
+$correct-color: cyan;
+
+// Generate unique animation delays for each question
+@function generate-animation-delay($index) {
+    @return $animation-duration-question * $index;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: white;
+    width: 500px;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeInAndOut $animation-duration-container-3 ease-in-out;
+}
+
+.question {
+    color: $question-color;
+    opacity: 0;
+}
+
+@for $i from 1 through 10 {
+    // Loop up to a maximum of 10 questions, adjust the number as per requirements
+    .question:nth-child(#{$i}) {
+        animation: fadeIn $animation-duration-question ease-in-out;
+        animation-fill-mode: both;
+        animation-delay: generate-animation-delay($i);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInAndOut {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
