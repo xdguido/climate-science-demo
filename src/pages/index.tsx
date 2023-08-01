@@ -32,7 +32,7 @@ export default function Home() {
                                     cy="14.7192"
                                     r="12.375"
                                     stroke="#6231EC"
-                                    stroke-width="3"
+                                    strokeWidth="3"
                                 />
                             </svg>
                             Electricity is measured in units called watts
@@ -50,7 +50,7 @@ export default function Home() {
                                     cy="14.7192"
                                     r="12.375"
                                     stroke="#6231EC"
-                                    stroke-width="3"
+                                    strokeWidth="3"
                                 />
                             </svg>
                             Electricity flows at the speed of light
@@ -69,7 +69,7 @@ export default function Home() {
                                     cy="14.7192"
                                     r="12.375"
                                     stroke="#6231EC"
-                                    stroke-width="3"
+                                    strokeWidth="3"
                                 />
                             </svg>
                             Electricity is a primary energy source
