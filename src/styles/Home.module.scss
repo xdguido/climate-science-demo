@@ -10,9 +10,31 @@ $oplympiad-purple: #6231ec;
     min-height: 100vh;
 }
 
-.title {
-    padding-inline: 20px;
-    margin-bottom: 20px;
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 80px;
+}
+
+.githubLink {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.languageSwitch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    select {
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 4px;
+    }
 }
 
 .svgIcon {
@@ -23,6 +45,11 @@ $oplympiad-purple: #6231ec;
 .svgIcon circle {
     stroke: $oplympiad-purple;
     stroke-width: 3px;
+}
+
+.title {
+    padding-inline: 20px;
+    margin-bottom: 20px;
 }
 
 .container {

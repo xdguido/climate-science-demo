@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.scss';
 import en from '@/locales/en';
 import es from '@/locales/es';
+import { LanguagesIcon, Github } from 'lucide-react';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -31,10 +33,13 @@ function LanguageSwitch() {
     };
 
     return (
-        <select onChange={changeLanguage} defaultValue={locale}>
-            <option value="en">English</option>
-            <option value="es">Español</option>
-        </select>
+        <div className={`${styles.languageSwitch}`}>
+            <LanguagesIcon aria-hidden={true} />
+            <select onChange={changeLanguage} defaultValue={locale}>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
     );
 }
 
@@ -52,8 +57,15 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={`${styles.main} ${inter.className}`}>
-                <div style={{ marginBottom: '70px' }}>
+                <div className={styles.nav}>
                     <LanguageSwitch />
+                    <Link
+                        className={styles.githubLink}
+                        href={'https://github.com/xdguido/climate-science-demo'}
+                    >
+                        <Github aria-hidden={true} />
+                        Go to repo
+                    </Link>
                 </div>
                 <div className={`${styles.container}`}>
                     <p className={`${styles.title}`}>{t.title}</p>
