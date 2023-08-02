@@ -6,7 +6,7 @@ $oplympiad-purple: #6231ec;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 6rem;
+    padding: 10px;
     min-height: 100vh;
 }
 
@@ -15,9 +15,19 @@ $oplympiad-purple: #6231ec;
     margin-bottom: 20px;
 }
 
+.svgIcon {
+    flex-shrink: 0;
+    fill: transparent;
+}
+
+.svgIcon circle {
+    stroke: $oplympiad-purple;
+    stroke-width: 3px;
+}
+
 .container {
     background-color: white;
-    width: 500px;
+    max-width: 500px;
     overflow: hidden;
     opacity: 0;
     padding: 40px;
@@ -29,17 +39,18 @@ $oplympiad-purple: #6231ec;
 }
 
 .correct {
-    fill: transparent;
-    animation: fadeCorrect $animation-duration ease-in-out infinite;
+    animation: fadeInFill $animation-duration ease-in-out infinite;
     animation-fill-mode: forwards;
 }
 
 .question {
     display: flex;
     align-items: center;
+    font-size: 0.9rem;
     gap: 20px;
     color: $oplympiad-purple;
     opacity: 0;
+    min-height: 50px;
     padding-inline: 15px;
     padding-block: 10px;
     margin-bottom: 15px;
@@ -62,7 +73,7 @@ $oplympiad-purple: #6231ec;
     }
 }
 
-@keyframes fadeCorrect {
+@keyframes fadeInFill {
     0%,
     50% {
         fill: transparent;
